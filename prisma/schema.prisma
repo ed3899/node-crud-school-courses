@@ -31,6 +31,7 @@ model Course {
 
   // Relation fields
   members       CourseEnrollment[]
+  tests Test[]
 }
 
 model CourseEnrollment {
@@ -60,6 +61,9 @@ model Test {
   date       DateTime
 
   // Relation fields
+  courseId Int
+  course Course @relation(fields: [courseId], references: [id])
+
   testResult TestResult[]
 }
 
