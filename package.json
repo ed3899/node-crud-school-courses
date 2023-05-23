@@ -10,7 +10,8 @@
     "prisma_studio": "prisma studio --port 1111",
     "prisma_migrate": "prisma migrate dev",
     "prisma_gen_client": "prisma generate",
-    "prisma_schema_setup": "npm run prisma_migrate && npm run prisma_gen_client"
+    "prisma_schema_setup": "npm run prisma_migrate && npm run prisma_gen_client",
+    "serve": "ts-node-dev --respawn --transpile-only src/index.ts"
   },
   "keywords": [],
   "author": "Eduardo Alfredo Casanova Lope",
@@ -20,12 +21,15 @@
     "@types/node": "^20.2.3",
     "prisma": "^4.14.1",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@hapi/boom": "^10.0.1",
     "@hapi/hapi": "^21.3.2",
     "@prisma/client": "^4.14.1",
     "@types/hapi": "^18.0.8",
-    "date-fns": "^2.30.0"
+    "date-fns": "^2.30.0",
+    "joi": "^17.9.2"
   }
 }
