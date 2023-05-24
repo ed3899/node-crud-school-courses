@@ -4,7 +4,7 @@
   "description": "A Node.js CRUD app with Hapi(Backend), Prisma(ORM) PostgreSQL(Database) and Typescript for domain modeling",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "prisma_seed": "ts-node prisma/seed.ts",
     "prisma_cleandb": "ts-node prisma/cleandb.ts",
     "prisma_studio": "prisma studio --port 1111",
@@ -17,6 +17,7 @@
   "author": "Eduardo Alfredo Casanova Lope",
   "license": "ISC",
   "devDependencies": {
+    "@jest/globals": "^29.5.0",
     "@tsconfig/node18": "^2.0.1",
     "@types/node": "^20.2.3",
     "jest": "^29.5.0",
@@ -33,5 +34,8 @@
     "@types/hapi": "^18.0.8",
     "date-fns": "^2.30.0",
     "joi": "^17.9.2"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   }
 }
