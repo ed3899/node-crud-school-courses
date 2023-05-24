@@ -1,18 +1,19 @@
-# Compile tsc and generate prisma client
+# Compile tsc
 FROM node:18.16.0 AS builder
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
 COPY . .
-RUN [ "npm", "run", "build"]
+RUN ["npm", "install"]
+RUN ["npm","run", "build"]
 
-# Serve the final compiled app
+# Run db migrations and serve the final compiled app
 FROM node:18.16.0
-ARG PORT=3000
 ARG DATABASE_URL=DATABASE_URL
-WORKDIR /app
-COPY --from=builder /app/node_modules/ ./node_modules/
-COPY --from=builder /app/dist/ ./dist/
 ENV DATABASE_URL=${DATABASE_URL}
+ARG PORT=3000
+WORKDIR /app
+COPY ./prisma ./prisma/
+COPY --from=builder /app/dist/ ./dist/
+COPY package*.json ./
+RUN ["npm", "install"]
 EXPOSE ${PORT}
-CMD ["node", "dist/index.js"]
+CMD npm run db:deploy && npm run serve

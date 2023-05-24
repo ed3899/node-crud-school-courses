@@ -4,7 +4,9 @@
   "description": "A Node.js CRUD app with Hapi(Backend), Prisma(ORM) PostgreSQL(Database) and Typescript for domain modeling",
   "main": "index.ts",
   "scripts": {
-    "build": "prisma generate && tsc --project tsconfig.json",
+    "build": "tsc --project tsconfig.json",
+    "db:deploy": "prisma migrate deploy",
+    "serve": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "test": "jest",
     "db:reset": "prisma migrate reset",
@@ -23,7 +25,6 @@
     "@types/hapi": "^18.0.8",
     "@types/node": "^20.2.3",
     "jest": "^29.5.0",
-    "prisma": "^4.14.1",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
@@ -33,6 +34,7 @@
     "@hapi/boom": "^10.0.1",
     "@hapi/hapi": "^21.3.2",
     "@prisma/client": "^4.14.1",
+    "prisma": "^4.14.1",
     "date-fns": "^2.30.0",
     "joi": "^17.9.2"
   },
