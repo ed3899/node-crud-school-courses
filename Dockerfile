@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-CMD [ "npm", "run", "build"]
+RUN [ "npm", "run", "build"]
 
 # Serve the final compiled app
 FROM node:18.16.0
@@ -15,4 +15,4 @@ COPY --from=builder /app/node_modules/ ./node_modules/
 COPY --from=builder /app/dist/ ./dist/
 ENV DATABASE_URL=${DATABASE_URL}
 EXPOSE ${PORT}
-RUN ["node", "dist/index.js"]
+CMD ["node", "dist/index.js"]

@@ -8,11 +8,15 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=school_db
     healthcheck:
-      test: ["CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
+      test: ["CMD-SHELL", "sh -c 'pg_isready --username=${POSTGRES_USER} --dbname=${POSTGRES_DB}'"]
       interval: 30s
       timeout: 60s
       retries: 5
       start_period: 80s
+    networks:
+      - node-crud
+    ports:
+      - 8000:5432
   prismaproject:
     image: edca3899/node-crud-prisma-hapi-pg
     build:
@@ -23,3 +27,11 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/school_db?schema=public
     ports:
       - 3000:3000
+    networks:
+      - node-crud
+    depends_on:
+      db:
+        condition: "service_healthy"
+networks:
+  node-crud:
+    name: node-crud
