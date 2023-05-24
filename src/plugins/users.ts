@@ -40,6 +40,18 @@ const usersPlugin: Hapi.Plugin<null> = {
             })
           }
         }
+      },
+      {
+        method: "DELETE",
+        path: "/users/{userId}",
+        handler: deleteUserHandler,
+        options: {
+          validate: {
+            params: Joi.object({
+              userId: Joi.number().integer()
+            })
+          }
+        }
       }
     ]);
   },
@@ -107,5 +119,22 @@ async function getUserHandler(request: Hapi.Request, h: Hapi.ResponseToolkit) {
     console.error(error)
 
     return Boom.badImplementation()
+  }
+}
+
+async function deleteUserHandler(request: Hapi.Request, h: Hapi.ResponseToolkit) {
+  const {prisma} = request.server.app
+  const userId =  parseInt(request.params.userId, 10)
+
+  try {
+    await prisma.user.delete({
+      where: {
+        id: userId,
+      },
+    })
+    return h.response().code(204)
+  } catch (err) {
+    console.log(err)
+    return h.response().code(500)
   }
 }

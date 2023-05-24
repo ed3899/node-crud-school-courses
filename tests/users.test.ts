@@ -82,4 +82,20 @@ describe("POST /users - create user", () => {
     });
     expect(response.statusCode).toEqual(400);
   });
+
+  test('delete user fails with invalid userId parameter', async () => {
+    const response = await server.inject({
+      method: 'DELETE',
+      url: `/users/aa22`,
+    })
+    expect(response.statusCode).toEqual(400)
+  })
+
+  test('delete user', async () => {
+    const response = await server.inject({
+      method: 'DELETE',
+      url: `/users/${userId}`,
+    })
+    expect(response.statusCode).toEqual(204)
+  })
 });
