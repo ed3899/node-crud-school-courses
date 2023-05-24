@@ -13,7 +13,7 @@ describe("POST /users - create user", () => {
     await server.stop();
   });
 
-  let userId;
+  let userId: number;
 
   test("create user", async () => {
     const response = await server.inject({
@@ -51,7 +51,35 @@ describe("POST /users - create user", () => {
       },
     });
 
-    console.log(response.payload)
-    expect(response.statusCode).toEqual(400)
+    console.log(response.payload);
+    expect(response.statusCode).toEqual(400);
+  });
+
+  test("get user return 404 for non existent user", async () => {
+    const response = await server.inject({
+      method: "GET",
+      url: "/users/9999",
+    });
+
+    expect(response.statusCode).toEqual(404);
+  });
+
+  test("get user returns user", async () => {
+    const response = await server.inject({
+      method: "GET",
+      url: `/users/${userId}`,
+    });
+    expect(response.statusCode).toEqual(200);
+    const user = JSON.parse(response.payload);
+
+    expect(user.id).toBe(userId);
+  });
+
+  test("get user fails with invalid id", async () => {
+    const response = await server.inject({
+      method: "GET",
+      url: "/users/a123",
+    });
+    expect(response.statusCode).toEqual(400);
   });
 });
