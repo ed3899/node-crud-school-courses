@@ -1,0 +1,144 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "node-crud",
+    "dateExported": "2023-05-25T21:31:40.908Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "23897467-906e-4fa9-96e4-91ca9d0ddbd2",
+            "colId": "531ee19e-e584-424f-805d-9c2b6e0c61cb",
+            "containerId": "",
+            "name": "GET / ",
+            "url": "http://localhost:3000/",
+            "method": "GET",
+            "sortNum": 1250,
+            "created": "2023-05-25T21:20:39.148Z",
+            "modified": "2023-05-25T21:29:54.977Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9e60323e-a45c-4a16-a44f-f8f1be8e857a",
+            "colId": "531ee19e-e584-424f-805d-9c2b6e0c61cb",
+            "containerId": "",
+            "name": "POST /users",
+            "url": "http://localhost:3000/users",
+            "method": "POST",
+            "sortNum": 2500,
+            "created": "2023-05-24T19:01:14.231Z",
+            "modified": "2023-05-25T21:31:13.793Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Rambo\",\n    \"email\": \"mercenary1@war.com\",\n    \"social\": {\n      \"facebook\": \"killer70\",\n      \"twitter\": \"boom70\",\n      \"github\": \"destroyer70\",\n      \"website\": \"soldier70\"\n    }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d1a7fb54-ab85-46f1-9524-8e64a04017b7",
+            "colId": "531ee19e-e584-424f-805d-9c2b6e0c61cb",
+            "containerId": "",
+            "name": "GET /users/:id",
+            "url": "http://localhost:3000/1",
+            "method": "GET",
+            "sortNum": 3750,
+            "created": "2023-05-25T21:26:26.131Z",
+            "modified": "2023-05-25T21:30:18.538Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7e824619-4dd5-44c5-b174-0fb58c7a9bfe",
+            "colId": "531ee19e-e584-424f-805d-9c2b6e0c61cb",
+            "containerId": "",
+            "name": "POST /users Copy",
+            "url": "http://localhost:3000/users/1",
+            "method": "PUT",
+            "sortNum": 5000,
+            "created": "2023-05-25T21:27:46.434Z",
+            "modified": "2023-05-25T21:29:24.734Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"firstName\": \"John X\",\n    \"lastName\": \"Rambo X\",\n    \"email\": \"mercenary@war.com\",\n    \"social\": {\n      \"facebook\": \"killer70\",\n      \"twitter\": \"boom70\",\n      \"github\": \"destroyer70\",\n      \"website\": \"soldier70\"\n    }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5102672d-73e8-44a7-815c-5f4a770759fd",
+            "colId": "531ee19e-e584-424f-805d-9c2b6e0c61cb",
+            "containerId": "",
+            "name": "GET /users/:id Copy",
+            "url": "http://localhost:3000/users/1",
+            "method": "DELETE",
+            "sortNum": 12500,
+            "created": "2023-05-25T21:28:51.508Z",
+            "modified": "2023-05-25T21:29:32.978Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*",
+                    "isDisabled": true
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
