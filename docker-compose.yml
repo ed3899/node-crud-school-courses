@@ -17,10 +17,6 @@ services:
       timeout: 60s
       retries: 5
       start_period: 80s
-    networks:
-      - node-crud
-    ports:
-      - 8000:5432
   prismaproject:
     image: edca3899/node-crud-prisma-hapi-pg
     build:
@@ -31,11 +27,6 @@ services:
     command: npm run serve
     ports:
       - 3000:3000
-    networks:
-      - node-crud
     depends_on:
       db:
         condition: "service_healthy"
-networks:
-  node-crud:
-    name: node-crud
