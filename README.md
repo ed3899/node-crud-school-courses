@@ -10,7 +10,7 @@ Run:
 
 ```
 git clone https://github.com/ed3899/node-crud-school-courses
-./run.sh`
+./run.sh
 ```
 
 `run.sh` is a helper script that populates files used for secrets that are requested in `docker-compose.yml`
