@@ -24,6 +24,5 @@ LICENSE
 README.md
 **/jest.config.js
 **/coverage
-**/migrations
 **/seed.ts
 **/tests

@@ -2,31 +2,48 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:15.3
+    image: edca3899/db_node-crud-prisma-hapi-pg
+    build:
+      context: .
+      dockerfile: ./db.Dockerfile
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=school_db
+      POSTGRES_USER_FILE: /run/secrets/db_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_DB_FILE: /run/secrets/db_name
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "pg_isready --username=postgres --dbname=school_db"
+          "pg_isready"
         ]
       interval: 30s
       timeout: 60s
       retries: 5
       start_period: 80s
+    secrets:
+      - db_user
+      - db_password
+      - db_name
   prismaproject:
     image: edca3899/node-crud-prisma-hapi-pg
     build:
       context: .
-      dockerfile: ./Dockerfile
-    environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/school_db?schema=public
-    command: npm run serve
+      dockerfile: ./app.Dockerfile
+      args:
+        - PORT=3000
+    secrets:
+      - db_url
     ports:
       - 3000:3000
     depends_on:
       db:
         condition: "service_healthy"
+secrets:
+  db_user:
+    file: secrets/db_user.txt
+  db_password:
+    file: secrets/db_password.txt
+  db_name:
+    file: secrets/db_name.txt
+  db_url:
+    file: secrets/db_url.txt
